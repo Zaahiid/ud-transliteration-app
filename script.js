@@ -9,7 +9,7 @@ let alphabets, alifMadda, beWords;
 
 async function initialize() {
     alphabets = await loadJSON('./Data/alphabets.json');
-    alifMadda = await loadJSON('./Data/alifMadda.json');
+    alifMadda = await loadJSON('./Data/Common_words/alifMadda.json');
     // Load more files as needed
 }
 
