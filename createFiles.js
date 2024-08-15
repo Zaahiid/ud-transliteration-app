@@ -14,6 +14,7 @@ const fileNames = [
     "khe.json",
     "daal.json",
     "dhal.json",
+    "zaal.json",
     "re.json",
     "ray.json",
     "ze.json",
