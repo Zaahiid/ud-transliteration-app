@@ -5,15 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UD - Transliteration App</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1 class="text-3xl font-bold">Urdu to Latin Transliterator</h1>
-    <textarea id="inputText" rows="4" cols="50" placeholder="Enter Urdu text here..."></textarea>
-    <button onclick="transliterate()">Transliterate</button>
-    <p id="outputText"></p>
-    <button onclick="copyToClipboard()">Copy to Clipboard</button>
+    <h1 class="title">Urdu to Latin Transliterator</h1>
+    <div class="container">
+        <div class="left-box">
+            <textarea id="inputText" rows="30" cols="50" placeholder="Enter Urdu text here..."></textarea>
+            <button onclick="transliterate()">Transliterate</button>
+        </div>
+        <div>
+            <p id="outputText"></p>
+            <button onclick="copyToClipboard()">Copy to Clipboard</button>
+        </div>
+    </div>
     <script src="./script.js"></script>
 </body>
+
 </html>

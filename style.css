@@ -1,0 +1,30 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-y: hidden;
+    background-color: #FF0080;
+}
+.title{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 30px;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    gap: 10vw;
+}
+.left-box{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+textarea{
+    font-size: 16px;
+    color: white;
+    padding: 20px;
+    background-color: #32012F;
+}
