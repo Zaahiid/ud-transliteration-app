@@ -93,130 +93,168 @@ initialize();
 
 function transliterate() {
   const inputText = document.getElementById("inputText").value;
-
   const lines = inputText.split("\n");
 
   const transliteratedLines = lines.map((line) => {
     const words = line.split(/\s+/);
 
     const transliteratedWords = words.map((word) => {
-      const initialChar = word[0];
+      const normalizedWord = word.normalize("NFC"); // Normalize the word once
+      const initialChar = normalizedWord[0]; // Get the normalized first character
       let transliterated = "";
 
       switch (initialChar) {
         case "ا":
-          transliterated = alifWords[word] || convertWithRules(word);
+          transliterated =
+            alifWords[normalizedWord] || convertWithRules(normalizedWord);
           break;
         case "آ":
-          transliterated = alifMaddaWords[word] || convertWithRules(word);
+          transliterated =
+            alifMaddaWords[normalizedWord] || convertWithRules(normalizedWord);
           break;
         case "ب":
-          transliterated = beWords[word] || convertWithRules(word);
+          transliterated =
+            beWords[normalizedWord] || convertWithRules(normalizedWord);
           break;
         case "پ":
-          transliterated = peWords[word] || convertWithRules(word);
+          transliterated =
+            peWords[normalizedWord] || convertWithRules(normalizedWord);
           break;
         case "ت":
-          transliterated = teWords[word] || convertWithRules(word);
+          transliterated =
+            teWords[normalizedWord] || convertWithRules(normalizedWord);
           break;
         case "ٹ":
-          transliterated = tehWords[word] || convertWithRules(word);
+          transliterated =
+            tehWords[normalizedWord] || convertWithRules(normalizedWord);
           break;
         case "ث":
-          transliterated = seWords[word] || convertWithRules(word);
+          transliterated =
+            seWords[normalizedWord] || convertWithRules(normalizedWord);
           break;
         case "ج":
-          transliterated = jimWords[word] || convertWithRules(word);
+          transliterated =
+            jimWords[normalizedWord] || convertWithRules(normalizedWord);
           break;
         case "چ":
-          transliterated = cheWords[word] || convertWithRules(word);
+          transliterated =
+            cheWords[normalizedWord] || convertWithRules(normalizedWord);
           break;
         case "ح":
-          transliterated = heBadiWords[word] || convertWithRules(word);
+          transliterated =
+            heBadiWords[normalizedWord] || convertWithRules(normalizedWord);
           break;
         case "خ":
-          transliterated = kheWords[word] || convertWithRules(word);
+          transliterated =
+            kheWords[normalizedWord] || convertWithRules(normalizedWord);
           break;
         case "د":
-          transliterated = daalWords[word] || convertWithRules(word);
+          transliterated =
+            daalWords[normalizedWord] || convertWithRules(normalizedWord);
           break;
         case "ڈ":
-          transliterated = dhalWords[word] || convertWithRules(word);
+          transliterated =
+            dhalWords[normalizedWord] || convertWithRules(normalizedWord);
           break;
         case "ذ":
-          transliterated = zaalWords[word] || convertWithRules(word);
+          transliterated =
+            zaalWords[normalizedWord] || convertWithRules(normalizedWord);
           break;
         case "ر":
-          transliterated = reWords[word] || convertWithRules(word);
+          transliterated =
+            reWords[normalizedWord] || convertWithRules(normalizedWord);
           break;
         case "ڑ":
-          transliterated = rayWords[word] || convertWithRules(word);
+          transliterated =
+            rayWords[normalizedWord] || convertWithRules(normalizedWord);
           break;
         case "ز":
-          transliterated = zeWords[word] || convertWithRules(word);
+          transliterated =
+            zeWords[normalizedWord] || convertWithRules(normalizedWord);
           break;
         case "ژ":
-          transliterated = zheWords[word] || convertWithRules(word);
+          transliterated =
+            zheWords[normalizedWord] || convertWithRules(normalizedWord);
           break;
         case "س":
-          transliterated = seenWords[word] || convertWithRules(word);
+          transliterated =
+            seenWords[normalizedWord] || convertWithRules(normalizedWord);
           break;
         case "ش":
-          transliterated = sheenWords[word] || convertWithRules(word);
+          transliterated =
+            sheenWords[normalizedWord] || convertWithRules(normalizedWord);
           break;
         case "ص":
-          transliterated = suaadWords[word] || convertWithRules(word);
+          transliterated =
+            suaadWords[normalizedWord] || convertWithRules(normalizedWord);
           break;
         case "ض":
-          transliterated = zuaadWords[word] || convertWithRules(word);
+          transliterated =
+            zuaadWords[normalizedWord] || convertWithRules(normalizedWord);
           break;
         case "ط":
-          transliterated = toeWords[word] || convertWithRules(word);
+          transliterated =
+            toeWords[normalizedWord] || convertWithRules(normalizedWord);
           break;
         case "ظ":
-          transliterated = zoeWords[word] || convertWithRules(word);
+          transliterated =
+            zoeWords[normalizedWord] || convertWithRules(normalizedWord);
           break;
         case "ع":
-          transliterated = ainWords[word] || convertWithRules(word);
+          transliterated =
+            ainWords[normalizedWord] || convertWithRules(normalizedWord);
           break;
         case "غ":
-          transliterated = ghainWords[word] || convertWithRules(word);
+          transliterated =
+            ghainWords[normalizedWord] || convertWithRules(normalizedWord);
           break;
         case "ف":
-          transliterated = feWords[word] || convertWithRules(word);
+          transliterated =
+            feWords[normalizedWord] || convertWithRules(normalizedWord);
           break;
         case "ق":
-          transliterated = qaafWords[word] || convertWithRules(word);
+          transliterated =
+            qaafWords[normalizedWord] || convertWithRules(normalizedWord);
           break;
         case "ک":
-          transliterated = kaafWords[word] || convertWithRules(word);
+          transliterated =
+            kaafWords[normalizedWord] || convertWithRules(normalizedWord);
           break;
         case "گ":
-          transliterated = gaafWords[word] || convertWithRules(word);
+          transliterated =
+            gaafWords[normalizedWord] || convertWithRules(normalizedWord);
           break;
         case "ل":
-          transliterated = laamWords[word] || convertWithRules(word);
+          transliterated =
+            laamWords[normalizedWord] || convertWithRules(normalizedWord);
           break;
         case "م":
-          transliterated = meemWords[word] || convertWithRules(word);
+          transliterated =
+            meemWords[normalizedWord] || convertWithRules(normalizedWord);
           break;
         case "ن":
-          transliterated = noonWords[word] || convertWithRules(word);
+          transliterated =
+            noonWords[normalizedWord] || convertWithRules(normalizedWord);
           break;
         case "و":
-          transliterated = wawWords[word] || convertWithRules(word);
+          transliterated =
+            wawWords[normalizedWord] || convertWithRules(normalizedWord);
           break;
-        case "ه":
-          transliterated = heChhotiWords[word] || convertWithRules(word);
+        case "ہ":
+          transliterated =
+            heChhotiWords[normalizedWord] || convertWithRules(normalizedWord);
           break;
         case "ھ":
-          transliterated = heDoChashmiWords[word] || convertWithRules(word);
+          transliterated =
+            heDoChashmiWords[normalizedWord] ||
+            convertWithRules(normalizedWord);
           break;
         case "ی":
-          transliterated = yeWords[word] || convertWithRules(word);
+          transliterated =
+            yeWords[normalizedWord] || convertWithRules(normalizedWord);
           break;
         default:
-          transliterated = convertWithRules(word);
+          transliterated = convertWithRules(normalizedWord);
       }
 
       return transliterated;
@@ -230,7 +268,8 @@ function transliterate() {
 }
 
 function convertWithRules(word) {
-  return word
+  const normalizedWord = word.normalize("NFC"); // Normalize only once
+  return normalizedWord
     .split("")
     .map((char) => alphabets[char] || char)
     .join("");
