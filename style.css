@@ -32,3 +32,10 @@ textarea{
     word-spacing: 1px;
     background-color: #32012F;
 }
+.output-box{
+    background-color: #32012F;
+    padding: 15px;
+    height: 80vh;
+    width: 30vw;
+    color: white;
+}
