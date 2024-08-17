@@ -99,8 +99,13 @@ function transliterate() {
     const words = line.split(/\s+/);
 
     const transliteratedWords = words.map((word) => {
-      const normalizedWord = word.normalize("NFC"); // Normalize the word once
-      const initialChar = normalizedWord[0]; // Get the normalized first character
+      let normalizedWord = word.normalize("NFC");
+
+      if (normalizedWord[1] === "ؔ") {
+        normalizedWord = `'${normalizedWord[0] + normalizedWord.slice(2)}'`;
+      }
+
+      const initialChar = normalizedWord[0];
       let transliterated = "";
 
       switch (initialChar) {
