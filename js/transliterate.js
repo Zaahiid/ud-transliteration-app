@@ -84,9 +84,9 @@ export function transliterate() {
 export function transliterateWord(word) {
   let normalizedWord = word.normalize("NFC");
 
-  if (normalizedWord[1] === "ؔ") {
-    // normalizedWord = `'${normalizedWord[0] + normalizedWord.slice(2)}'`;
-    normalizedWord = `${normalizedWord.replace("ؔ", "")}`;
+  const hasTakhallusAlaamat = normalizedWord.includes("ؔ");
+  if (hasTakhallusAlaamat) {
+    normalizedWord = normalizedWord.replace("ؔ", "");
   }
 
   const initialChar = normalizedWord[0];
@@ -243,6 +243,9 @@ export function transliterateWord(word) {
       break;
     default:
       transliterated = convertWithRules(normalizedWord);
+  }
+  if (hasTakhallusAlaamat) {
+    transliterated = `'${transliterated}'`;
   }
 
   return transliterated;
