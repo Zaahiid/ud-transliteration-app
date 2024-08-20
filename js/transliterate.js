@@ -1,97 +1,45 @@
-async function loadJSON(file) {
-  try {
-    const response = await fetch(file);
-    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-    return await response.json();
-  } catch (error) {
-    console.error(`Failed to load JSON file: ${file}`, error);
-    return {};
-  }
-}
-
-let alphabets,
-  alifWords,
+import {
+  ainWords,
   alifMaddaWords,
+  alifWords,
+  alphabets,
   beWords,
-  peWords,
-  teWords,
-  tehWords,
-  seWords,
-  jimWords,
   cheWords,
-  heBadiWords,
-  kheWords,
   daalWords,
   dhalWords,
-  zaalWords,
-  reWords,
-  rayWords,
-  zeWords,
-  zheWords,
-  seenWords,
-  sheenWords,
-  suaadWords,
-  zuaadWords,
-  toeWords,
-  zoeWords,
-  ainWords,
-  ghainWords,
   feWords,
-  qaafWords,
-  kaafWords,
   gaafWords,
+  ghainWords,
+  heBadiWords,
+  heChhotiWords,
+  heDoChashmiWords,
+  jimWords,
+  kaafWords,
+  kheWords,
   laamWords,
   meemWords,
   noonWords,
+  peWords,
+  qaafWords,
+  rayWords,
+  reWords,
+  seenWords,
+  seWords,
+  sheenWords,
+  suaadWords,
+  tehWords,
+  teWords,
+  toeWords,
   wawWords,
-  heChhotiWords,
-  heDoChashmiWords,
-  yeWords;
+  yeWords,
+  zaalWords,
+  zeWords,
+  zheWords,
+  zoeWords,
+  zuaadWords,
+} from "./initialize.js";
 
-async function initialize() {
-  alphabets = await loadJSON("./Data/alphabets.json");
-  alifWords = await loadJSON("./Data/Common_words/alif.json");
-  alifMaddaWords = await loadJSON("./Data/Common_words/alifMadda.json");
-  beWords = await loadJSON("./Data/Common_words/be.json");
-  peWords = await loadJSON("./Data/Common_words/pe.json");
-  teWords = await loadJSON("./Data/Common_words/te.json");
-  tehWords = await loadJSON("./Data/Common_words/teh.json");
-  seWords = await loadJSON("./Data/Common_words/se.json");
-  jimWords = await loadJSON("./Data/Common_words/jim.json");
-  cheWords = await loadJSON("./Data/Common_words/che.json");
-  heBadiWords = await loadJSON("./Data/Common_words/he_Badi.json");
-  kheWords = await loadJSON("./Data/Common_words/khe.json");
-  daalWords = await loadJSON("./Data/Common_words/daal.json");
-  dhalWords = await loadJSON("./Data/Common_words/dhal.json");
-  zaalWords = await loadJSON("./Data/Common_words/zaal.json");
-  reWords = await loadJSON("./Data/Common_words/re.json");
-  rayWords = await loadJSON("./Data/Common_words/ray.json");
-  zeWords = await loadJSON("./Data/Common_words/ze.json");
-  zheWords = await loadJSON("./Data/Common_words/zhe.json");
-  seenWords = await loadJSON("./Data/Common_words/seen.json");
-  sheenWords = await loadJSON("./Data/Common_words/sheen.json");
-  suaadWords = await loadJSON("./Data/Common_words/suaad.json");
-  zuaadWords = await loadJSON("./Data/Common_words/zuaad.json");
-  toeWords = await loadJSON("./Data/Common_words/toe.json");
-  zoeWords = await loadJSON("./Data/Common_words/zoe.json");
-  ainWords = await loadJSON("./Data/Common_words/ain.json");
-  ghainWords = await loadJSON("./Data/Common_words/ghain.json");
-  feWords = await loadJSON("./Data/Common_words/fe.json");
-  qaafWords = await loadJSON("./Data/Common_words/qaaf.json");
-  kaafWords = await loadJSON("./Data/Common_words/kaaf.json");
-  gaafWords = await loadJSON("./Data/Common_words/gaaf.json");
-  laamWords = await loadJSON("./Data/Common_words/laam.json");
-  meemWords = await loadJSON("./Data/Common_words/meem.json");
-  noonWords = await loadJSON("./Data/Common_words/noon.json");
-  wawWords = await loadJSON("./Data/Common_words/waw.json");
-  heChhotiWords = await loadJSON("./Data/Common_words/he_chhoti.json");
-  heDoChashmiWords = await loadJSON("./Data/Common_words/he_do_chashmi.json");
-  yeWords = await loadJSON("./Data/Common_words/ye.json");
-}
-
-initialize();
-
-function transliterate() {
+export function transliterate() {
   const inputText = document.getElementById("inputText").value;
   const lines = inputText.split("\n");
 
@@ -133,7 +81,7 @@ function transliterate() {
     transliteratedLines.join("\n");
 }
 
-function transliterateWord(word) {
+export function transliterateWord(word) {
   let normalizedWord = word.normalize("NFC");
 
   if (normalizedWord[1] === "ؔ") {
@@ -300,22 +248,10 @@ function transliterateWord(word) {
   return transliterated;
 }
 
-function convertWithRules(word) {
+export function convertWithRules(word) {
   const normalizedWord = word.normalize("NFC");
   return normalizedWord
     .split("")
     .map((char) => alphabets[char] || char)
     .join("");
-}
-
-function copyToClipboard() {
-  const outputText = document.getElementById("outputText").innerText;
-  navigator.clipboard
-    .writeText(outputText)
-    .then(() => {
-      alert("Text copied to clipboard!");
-    })
-    .catch((err) => {
-      console.error("Failed to copy text: ", err);
-    });
 }

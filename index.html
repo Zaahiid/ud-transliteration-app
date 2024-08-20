@@ -17,16 +17,16 @@
     <div class="container">
         <div class="left-box">
             <textarea id="inputText" rows="15" cols="50" placeholder="Enter Urdu text here..."></textarea>
-            <button onclick="transliterate()">Transliterate</button>
+            <button id="transliterationButton">Transliterate</button>
         </div>
         <div>
             <div class="output-box">
                 <p id="outputText"></p>
             </div>
-            <button onclick="copyToClipboard()">Copy to Clipboard</button>
+            <button id="copyButton">Copy to Clipboard</button>
         </div>
     </div>
-    <script src="./script.js"></script>
+    <script type="module" src="./js/app.js"></script>
 </body>
 
 </html>
