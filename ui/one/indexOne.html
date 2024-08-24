@@ -14,8 +14,15 @@
 
 <body>
     <h1 class="title">Urdu to Latin Transliterator</h1>
+    <div class="word">
+        <span>و</span>
+        <span>د</span>
+        <span>ر</span>
+        <span>ا</span>
+        <span>💘</span>
+    </div>
     <div class="hero-section">
-        <h1 class="khush-aamdid btn">خوش آمدید</h1>
+        <h1 class="khush-aamdid">خوش آمدید</h1>
         <div class="data-container">
             <span class="btn">Hover Me </span>
         </div>
@@ -33,6 +40,23 @@
             <button id="copyButton">Copy to Clipboard</button>
         </div>
     </div>
+    <script>
+        const spans = document.querySelectorAll('.word span');
+
+        spans.forEach((span, idx) => {
+            span.addEventListener('click', (e) => {
+                e.target.classList.add('active');
+            });
+            span.addEventListener('animationend', (e) => {
+                e.target.classList.remove('active');
+            });
+
+            // Initial animation
+            setTimeout(() => {
+                span.classList.add('active');
+            }, 750 * (idx + 1))
+        });
+    </script>
 </body>
 
 </html>
