@@ -52,6 +52,12 @@ export function transliterate() {
     while (i < words.length) {
       let normalizedWord = words[i].normalize("NFC");
 
+      if (normalizedWord === "و" && i > 0 && i < words.length - 1) {
+        transliteratedWords.push("-O-");
+        i++;
+        continue;
+      }
+
       // Handle chain of words ending with " ِ"
       let joinedWords = [];
       while (normalizedWord.endsWith("ِ") && i + 1 < words.length) {
@@ -74,7 +80,7 @@ export function transliterate() {
       i++;
     }
 
-    return transliteratedWords.join(" ");
+    return transliteratedWords.join(" ").replace(/ -O- /g, "-O-");
   });
 
   document.getElementById("outputText").innerText =
